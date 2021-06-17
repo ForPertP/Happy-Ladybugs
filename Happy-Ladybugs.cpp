@@ -27,6 +27,7 @@ string happyLadybugs(string b)
     }
 }
 
+
 string happyLadybugs1(string b)
 {
     int n = b.size();
