@@ -1,3 +1,18 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+
+/*
+ * Complete the 'happyLadybugs' function below.
+ *
+ * The function is expected to return a STRING.
+ * The function accepts STRING b as parameter.
+ */
+
+
 string happyLadybugs(string b)
 {
     int c = std::count(b.begin(), b.end(), '_');
