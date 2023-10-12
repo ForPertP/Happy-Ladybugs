@@ -43,3 +43,30 @@ string happyLadybugs(string b)
 }
 
 
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string g_temp;
+    getline(cin, g_temp);
+
+    int g = stoi(ltrim(rtrim(g_temp)));
+
+    for (int g_itr = 0; g_itr < g; g_itr++) {
+        string n_temp;
+        getline(cin, n_temp);
+
+        int n = stoi(ltrim(rtrim(n_temp)));
+
+        string b;
+        getline(cin, b);
+
+        string result = happyLadybugs(b);
+
+        fout << result << "\n";
+    }
+
+    fout.close();
+
+    return 0;
+}
