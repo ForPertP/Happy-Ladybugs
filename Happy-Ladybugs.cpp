@@ -14,31 +14,39 @@ string rtrim(const string &);
 
 string happyLadybugs(string b)
 {
-    int c = std::count(b.begin(), b.end(), '_');
-    int check = 0;
-    int n = b.size() - c;
+    std::vector<int> x(26, 0);
+    bool sp = false;
+    int count = 0;
+    char d = '!';
 
-    if (c != 0)
-    {
-        std::sort(b.begin(), b.end());
+    for (char c : b) {
+        if (c == '_') {
+            sp = true;
+            continue;
+        }
+
+        if (++x[c - 'A'] == 1) {
+            count++;
+        }
+
+        if (d != c) {
+            count--;
+        }
+
+        d = c;
     }
 
-    for (int i = 0; i < n; ++i)
-    {
-        if (b[i] == b[i-1] || b[i] == b[i+1])
-        {
-            check++;
+    if (!sp && count != 0) {
+        return "NO";
+    }
+
+    for (int i : x) {
+        if (i == 1) {
+            return "NO";
         }
     }
 
-    if (check == n)
-    {
-        return "YES";
-    }
-    else
-    {
-        return "NO";
-    }
+    return "YES";
 }
 
 int main()
