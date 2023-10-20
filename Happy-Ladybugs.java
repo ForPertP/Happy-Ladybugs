@@ -19,3 +19,31 @@ class Result {
      * The function accepts STRING b as parameter.
      */
 }
+
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int g = Integer.parseInt(bufferedReader.readLine().trim());
+
+        IntStream.range(0, g).forEach(gItr -> {
+            try {
+                int n = Integer.parseInt(bufferedReader.readLine().trim());
+
+                String b = bufferedReader.readLine();
+
+                String result = Result.happyLadybugs(b);
+
+                bufferedWriter.write(result);
+                bufferedWriter.newLine();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
