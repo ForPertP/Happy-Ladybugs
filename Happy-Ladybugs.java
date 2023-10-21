@@ -18,6 +18,51 @@ class Result {
      * The function is expected to return a STRING.
      * The function accepts STRING b as parameter.
      */
+public static String happyLadybugs(String b) {
+       //List<Integer> x = new ArrayList<Integer>(26);
+       List<Integer> x = new ArrayList<>(26);
+        for (int i = 0; i < 26; i++) {
+            x.add(0);
+        }
+
+        boolean sp = false;
+        int count = 0;
+        char d = '!';
+
+        for (char c : b.toCharArray()) {
+            if (c == '_') {
+                sp = true;
+                continue;
+            }
+
+            int index = c - 'A';
+            x.set(index, x.get(index) + 1);
+
+            if (x.get(index) == 1) {
+                count++;
+            }
+
+            if (d != c) {
+                count--;
+            }
+
+            d = c;
+        }
+
+        if (!sp && count != 0) {
+            return "NO";
+        }
+
+        for (int i : x) {
+            if (i == 1) {
+                return "NO";
+            }
+        }
+
+        return "YES";
+    }
+
+     
 }
 
 
