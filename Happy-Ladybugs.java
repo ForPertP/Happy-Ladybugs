@@ -18,7 +18,8 @@ class Result {
      * The function is expected to return a STRING.
      * The function accepts STRING b as parameter.
      */
-public static String happyLadybugs(String b) {
+
+ public static String happyLadybugs(String b) {
        //List<Integer> x = new ArrayList<Integer>(26);
        List<Integer> x = new ArrayList<>(26);
         for (int i = 0; i < 26; i++) {
@@ -62,9 +63,45 @@ public static String happyLadybugs(String b) {
         return "YES";
     }
 
-     
-}
+    
+    public static String happyLadybugs2(String b)
+    {
+        int[] x = new int[26];
+        boolean sp = false;
+        int count = 0;
+        char d = '!';
 
+        for (char c : b.toCharArray()) {
+            if (c == '_') {
+                sp = true;
+                continue;
+            }
+
+            if (x[c - 'A']++ == 0) {
+                count++;
+            }
+
+            if (d != c) {
+                count--;
+            }
+
+            d = c;
+        }
+
+        if (!sp && count != 0) {
+            return "NO";
+        }
+
+        for (int i : x) {
+            if (i == 1) {
+                return "NO";
+            }
+        }
+
+        return "YES";
+    }
+
+}
 
 public class Solution {
     public static void main(String[] args) throws IOException {
